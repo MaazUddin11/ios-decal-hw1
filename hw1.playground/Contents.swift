@@ -22,7 +22,7 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [EXPLAIN YOUR ANSWER HERE] Yes, they are the same type. That's because Swift picks the values from the current frame it is in. So when self.wordA is called initalized to wordA, it takes the wordA that is passed into the init function rather than the class variable wordA. The same applied for wordB.
 
 
 //: ## Q2: Variable Types and Function Types
@@ -30,23 +30,24 @@ class Words {
         let reversedWords = words.map() {String($0.characters.reverse())}
         var numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [EXPLAIN YOUR ANSWER HERE] 1) Because "for let" isn't valid syntax, it must be "for var". 2) There is no boolean being returned for a true value.
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+    func isAnagram() -> Bool {
+        var countLetters = [Character : Int] //Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
@@ -89,7 +90,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [EXPLAIN YOUR ANSWER HERE] 1) countLetters was declared using ":" rather than "=". 2) The word "class" was before "func" causing an error.
     
     
 }
@@ -99,6 +100,8 @@ class Words {
 //: ### If you now see an output stream in the right sidebar, you have successfully
 //: ### debugged the code above. Remember that you must also fully and correctly answer
 //: ### all of the written questions above to receive full credit for this homework.
+
+//: Cannot figure out why some of the other lines of code didn't compile :/
 
 
 //: **DO NOT** touch any code below this point.
